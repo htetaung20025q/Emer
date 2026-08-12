@@ -45,7 +45,18 @@ export const translations = {
     redcross: "Red Cross Society",
     copyright: "© 2026 KU NYI KAL SAL",
     privacyLink: "Privacy Policy",
-    termsLink: "Terms of Service"
+    termsLink: "Terms of Service",
+    callCenter: "24/7 Call Center",
+    firstAidTitle: "First Aid & Emergency Guidelines",
+    faCPRTitle: "1. Unconsciousness & CPR",
+    faCPRDesc: "Place the person on their back. Place your hands on the center of their chest and push hard and fast (100-120 compressions per minute).",
+    faBleedingTitle: "2. Severe Bleeding",
+    faBleedingDesc: "Apply direct, firm pressure to the wound with a clean cloth or bandage. Elevate the injured area above the heart if possible.",
+    faBurnsTitle: "3. Burns",
+    faBurnsDesc: "Cool the burn under cool (not cold) running water for at least 10 minutes. Do NOT apply ice. Cover with a clean, non-stick dressing.",
+    faChokingTitle: "4. Choking",
+    faChokingDesc: "Stand behind the person, wrap your arms around their waist, and give quick upward thrusts to the abdomen (Heimlich maneuver).",
+    closeBtn: "Close Guide"
   },
   mm: {
     navAbout: "ကျွန်ုပ်တို့အကြောင်း",
@@ -93,6 +104,17 @@ export const translations = {
     redcross: "ကြက်ခြေနီ",
     copyright: "© ၂၀၂၆ ကူညီကယ်ဆယ်",
     privacyLink: "ကိုယ်ရေးကိုယ်တာ မူဝါဒ",
-    termsLink: "ဝန်ဆောင်မှု စည်းမျဉ်းများ"
+    termsLink: "ဝန်ဆောင်မှု စည်းမျဉ်းများ",
+    callCenter: "၂၄/၇ ဖုန်းဖြေစင်တာ",
+    firstAidTitle: "ရှေးဦးသူနာပြုစုနည်း လမ်းညွှန်",
+    faCPRTitle: "၁။ သတိလစ်မေ့မြောခြင်း နှင့် CPR",
+    faCPRDesc: "လူနာကို ပက်လက်ထားပါ။ ရင်ဘတ်အလယ်ကို လက်နှစ်ဖက်ထပ်၍ ခပ်ပြင်းပြင်းနှင့် မြန်မြန် ဖိပေးပါ။ (၁ မိနစ်လျှင် အကြိမ် ၁၀၀ မှ ၁၂၀ နှုန်း)",
+    faBleedingTitle: "၂။ သွေးထွက်လွန်ခြင်း",
+    faBleedingDesc: "သန့်ရှင်းသော အဝတ် သို့မဟုတ် ပတ်တီးဖြင့် သွေးထွက်နေသော နေရာကို တိုက်ရိုက် ဖိထားပါ။ ဒဏ်ရာကို နှလုံးထက် မြင့်သောနေရာတွင် ထားပါ။",
+    faBurnsTitle: "၃။ မီးလောင်ခြင်း",
+    faBurnsDesc: "မီးလောင်ဒဏ်ရာကို ရေအေးဖြင့် အနည်းဆုံး (၁၀) မိနစ်ခန့် ဆေးကြောပါ။ ရေခဲ မကပ်ရပါ။ သန့်ရှင်းသော ပတ်တီး သို့မဟုတ် အဝတ်ဖြင့် ဖုံးအုပ်ပါ။",
+    faChokingTitle: "၄။ အသက်ရှူလမ်းကြောင်း ပိတ်ဆို့ခြင်း (နင်ခြင်း)",
+    faChokingDesc: "လူနာ၏ ကျောဘက်မှနေ၍ လက်နှစ်ဖက်ဖြင့် ဝမ်းဗိုက်ကို ပိုက်ဖက်ကာ အပေါ်သို့ ရုတ်တရက် ဆောင့်ဆွဲပါ။ (Heimlich Maneuver လုပ်ဆောင်ပါ)။",
+    closeBtn: "ပိတ်မည်"
   }
 };

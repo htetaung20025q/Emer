@@ -5,7 +5,7 @@ export default function Navbar({ lang, setLang, t }) {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 w-full border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+      <div className="w-full px-4 md:px-8 py-3 flex justify-between items-center">
         
         {/* Mobile Left: Hamburger */}
         <div className="md:hidden flex items-center">
@@ -27,10 +27,6 @@ export default function Navbar({ lang, setLang, t }) {
 
         {/* Desktop Right */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#about" className="text-slate-600 font-semibold text-sm">
-            {t.navAbout}
-          </a>
-          
           <div className="flex items-center gap-2 text-sm select-none cursor-pointer">
             <span 
               onClick={() => setLang('en')} 
@@ -45,11 +41,6 @@ export default function Navbar({ lang, setLang, t }) {
             >
               MM
             </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-500"></div>
-            <span className="text-xs font-bold text-slate-600">{t.systemStatus}</span>
           </div>
 
           <a href="#download" className="bg-red-600 text-white font-bold uppercase px-4 py-2 text-xs md:text-sm rounded-sm shadow-sm">
@@ -68,9 +59,6 @@ export default function Navbar({ lang, setLang, t }) {
       {/* Mobile Dropdown */}
       {isMenuOpen && (
         <div className="md:hidden bg-slate-50 border-t border-slate-200 flex flex-col p-4 gap-4">
-          <a href="#about" className="text-slate-600 font-semibold text-sm border-b border-slate-200 pb-2">
-            {t.navAbout}
-          </a>
           <div className="flex items-center gap-2 text-sm select-none cursor-pointer border-b border-slate-200 pb-2">
             <span 
               onClick={() => setLang('en')} 
@@ -85,10 +73,6 @@ export default function Navbar({ lang, setLang, t }) {
             >
               MM
             </span>
-          </div>
-          <div className="flex items-center gap-2 pt-1">
-            <div className="w-2 h-2 rounded-full bg-green-500"></div>
-            <span className="text-xs font-bold text-slate-600">{t.systemStatus}</span>
           </div>
         </div>
       )}

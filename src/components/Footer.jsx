@@ -12,16 +12,16 @@ export default function Footer({ t }) {
         
         {/* Top Area (Hotlines) */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center md:text-left">
             {t.hotlineTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {hotlines.map((hotline, idx) => (
-              <div key={idx} className="bg-slate-800/50 border-l-2 border-red-600 p-6 flex flex-col justify-center">
-                <div className="text-white font-medium mb-3">
+              <div key={idx} className="bg-slate-800/40 rounded-2xl p-6 md:p-8 flex flex-col items-center justify-center text-center">
+                <div className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-3">
                   {hotline.name}
                 </div>
-                <div className="text-red-500 text-3xl font-bold tracking-widest">
+                <div className="text-red-500 font-black text-4xl md:text-5xl">
                   {hotline.number}
                 </div>
               </div>

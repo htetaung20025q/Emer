@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { translations } from './translations';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import QuickActions from './components/QuickActions';
+
 import MainContent from './components/MainContent';
 import UseCases from './components/UseCases';
 import LearnApp from './components/LearnApp';
@@ -42,7 +42,7 @@ function App() {
         <>
           <Hero t={t} onOpenFirstAid={() => setIsFirstAidModalOpen(true)} onNavigateGuide={() => setCurrentView('guide')} onNavigateLearn={() => setCurrentView('learn')} />
           <MainContent t={t} />
-          <QuickActions t={t} />
+
           <UseCases t={t} />
           <Privacy t={t} />
           <DownloadApp t={t} />

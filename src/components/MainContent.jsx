@@ -35,11 +35,15 @@ export default function MainContent({ t }) {
         </div>
 
         {/* Left Column: Timeline UI */}
-        <div className="md:col-span-7 md:col-start-1 order-2 md:order-1 relative z-10">
+        <div className="md:col-span-7 md:col-start-1 order-2 md:order-1 relative z-10 pt-4 md:pt-0">
+          <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-10 tracking-tight">
+            {t.flowTitle}
+          </h2>
+
           {/* Continuous vertical line */}
-          <div className="absolute left-[10px] top-6 bottom-0 w-0.5 bg-slate-200 hidden md:block"></div>
-          {/* Mobile continuous vertical line (shorter top offset to match mobile spacing) */}
-          <div className="absolute left-[10px] top-4 bottom-0 w-0.5 bg-slate-200 md:hidden"></div>
+          <div className="absolute left-[10px] top-[90px] bottom-0 w-0.5 bg-slate-200 hidden md:block"></div>
+          {/* Mobile continuous vertical line */}
+          <div className="absolute left-[10px] top-[74px] bottom-0 w-0.5 bg-slate-200 md:hidden"></div>
           
           <div className="flex flex-col relative pt-2">
             {steps.map((step, index) => (

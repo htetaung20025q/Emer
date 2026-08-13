@@ -1,33 +1,71 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { translations } from './translations';
 import Navbar from './components/Navbar';
-import OfflineBanner from './components/OfflineBanner';
 import Hero from './components/Hero';
+import QuickActions from './components/QuickActions';
 import MainContent from './components/MainContent';
 import UseCases from './components/UseCases';
-import LegalWarning from './components/LegalWarning';
+import LearnApp from './components/LearnApp';
+import HowToUse from './components/HowToUse';
+
 import Privacy from './components/Privacy';
+import DownloadApp from './components/DownloadApp';
 import Footer from './components/Footer';
-import FloatingCallButton from './components/FloatingCallButton';
 import FirstAidModal from './components/FirstAidModal';
+import ChatModal from './components/ChatModal';
+import UserGuide from './components/UserGuide';
+import LegalModals from './components/LegalModals';
+import RegistrationModals from './components/RegistrationModals';
+import PrivacyConsentModal from './components/PrivacyConsentModal';
 
 function App() {
-  const [lang, setLang] = useState('mm');
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('preferredLanguage') || 'en';
+  });
+  
+  useEffect(() => {
+    localStorage.setItem('preferredLanguage', lang);
+  }, [lang]);
+
   const [isFirstAidModalOpen, setIsFirstAidModalOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [currentView, setCurrentView] = useState('home');
+  const [activeLegalModal, setActiveLegalModal] = useState(null);
+  const [activeRegistrationModal, setActiveRegistrationModal] = useState(null);
   const t = translations[lang];
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
-      <Navbar lang={lang} setLang={setLang} t={t} />
-      <OfflineBanner t={t} onOpenFirstAid={() => setIsFirstAidModalOpen(true)} />
-      <Hero t={t} />
-      <MainContent t={t} />
-      <UseCases t={t} />
-      <LegalWarning t={t} />
-      <Privacy t={t} />
-      <Footer t={t} />
-      <FloatingCallButton t={t} />
+      <Navbar lang={lang} setLang={setLang} t={t} onOpenChat={() => setIsChatOpen(true)} onNavigateHome={() => setCurrentView('home')} onOpenRegistration={setActiveRegistrationModal} />
+      
+      {currentView === 'home' && (
+        <>
+          <Hero t={t} onOpenFirstAid={() => setIsFirstAidModalOpen(true)} onNavigateGuide={() => setCurrentView('guide')} onNavigateLearn={() => setCurrentView('learn')} />
+          <MainContent t={t} />
+          <QuickActions t={t} />
+          <UseCases t={t} />
+          <Privacy t={t} />
+          <DownloadApp t={t} />
+        </>
+      )}
+
+      {currentView === 'guide' && (
+        <UserGuide t={t} lang={lang} />
+      )}
+
+      {currentView === 'learn' && (
+        <>
+          <LearnApp t={t} />
+          <HowToUse />
+        </>
+      )}
+
+      <Footer t={t} onOpenLegal={setActiveLegalModal} />
       <FirstAidModal t={t} isOpen={isFirstAidModalOpen} onClose={() => setIsFirstAidModalOpen(false)} />
+      <ChatModal t={t} isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      <LegalModals t={t} activeModal={activeLegalModal} onClose={() => setActiveLegalModal(null)} />
+      <RegistrationModals activeModal={activeRegistrationModal} onClose={() => setActiveRegistrationModal(null)} />
+      <PrivacyConsentModal t={t} />
     </div>
   );
 }

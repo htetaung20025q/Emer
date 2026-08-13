@@ -1,4 +1,4 @@
-export default function Footer({ t, onOpenLegal }) {
+export default function Footer({ t, onOpenLegal, onNavigateAbout }) {
   const hotlines = [
     { name: t.police, number: "199" },
     { name: t.hospital, number: "192" },
@@ -24,25 +24,25 @@ export default function Footer({ t, onOpenLegal }) {
           {/* About Us */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-bold mb-2">{t.aboutUs}</h3>
-            <a href="#" className="text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.aboutUs}</a>
-            <a href="#" className="text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.callCenter}</a>
+            <button onClick={onNavigateAbout} className="text-left text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.aboutUs}</button>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.callCenter}</span>
           </div>
           {/* Services */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-bold mb-2">{t.services}</h3>
-            <a href="#" className="text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.sosAlert}</a>
-            <a href="#" className="text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.locationSharing}</a>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.sosAlert}</span>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.locationSharing}</span>
           </div>
           {/* Resources */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-bold mb-2">{t.resources}</h3>
-            <a href="#" className="text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.firstAidGuide}</a>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.firstAidGuide}</span>
           </div>
           {/* Legal */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-bold mb-2">{t.legal}</h3>
-            <button onClick={() => onOpenLegal('privacy')} className="text-left text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.privacyLink}</button>
-            <button onClick={() => onOpenLegal('terms')} className="text-left text-slate-400 hover:text-red-500 transition-colors duration-200 cursor-pointer">{t.termsLink}</button>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.privacyLink}</span>
+            <span className="text-slate-500 cursor-not-allowed opacity-50 pointer-events-none">{t.termsLink}</span>
           </div>
         </div>
 

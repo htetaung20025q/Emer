@@ -22,7 +22,7 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onNavigateHome, o
         </div>
 
         {/* Center/Left: Logo */}
-        <button onClick={onNavigateHome} className="text-lg md:text-xl font-bold uppercase tracking-wide text-red-600 flex-1 text-center md:text-left hover:text-red-700 transition-colors">
+        <button onClick={onNavigateHome} className="text-lg md:text-xl font-bold uppercase tracking-wide text-red-600 flex-1 text-left ml-3 md:ml-0 hover:text-red-700 transition-colors">
           KHU NYI KAL SAL
         </button>
 

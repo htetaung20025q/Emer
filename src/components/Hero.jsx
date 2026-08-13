@@ -8,16 +8,16 @@ export default function Hero({ t, onOpenFirstAid, onNavigateGuide, onNavigateLea
         <p className="text-lg md:text-xl font-medium text-slate-300 max-w-2xl mb-10">
           {t.heroSub}
         </p>
-        <div className="flex flex-col sm:flex-row items-start gap-4">
+        <div className="flex flex-row items-center gap-3 w-full sm:w-auto mt-2">
           <button 
             onClick={onNavigateGuide}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm md:text-base tracking-wider uppercase px-8 py-4 rounded-full shadow-lg transition-colors outline-none flex items-center justify-center w-full sm:w-auto"
+            className="flex-1 sm:flex-none bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] sm:text-sm md:text-base tracking-wider uppercase px-2 sm:px-8 py-3 sm:py-4 min-h-[44px] rounded-full shadow-lg transition-colors outline-none flex items-center justify-center text-center"
           >
             {t.userGuide}
           </button>
           <button 
             onClick={onNavigateLearn}
-            className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm md:text-base tracking-wider uppercase px-8 py-4 rounded-full shadow-lg transition-colors outline-none flex items-center justify-center w-full sm:w-auto border border-slate-700"
+            className="flex-1 sm:flex-none bg-slate-800 hover:bg-slate-700 text-white font-bold text-[10px] sm:text-sm md:text-base tracking-wider uppercase px-2 sm:px-8 py-3 sm:py-4 min-h-[44px] rounded-full shadow-lg transition-colors outline-none flex items-center justify-center text-center border border-slate-700"
           >
             {t.learnApp}
           </button>

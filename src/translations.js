@@ -7,7 +7,7 @@ export const translations = {
     offlineDesc: "Access essential emergency instructions even without an internet connection.",
     saveOffline: "SAVE FOR OFFLINE ACCESS",
     heroTitle: "STAY SAFE. GET HELP FAST.",
-    heroSub: "Know what to do when every second matters.",
+    heroSub: "Know what to do when every second matters. Be prepared for any emergency.",
     step1Title: "SEND AN SOS",
     step1Desc: "Alert responders and share your current location.",
     step2Title: "SHARE YOUR LOCATION",

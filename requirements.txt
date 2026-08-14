@@ -1,1 +1,8 @@
 jinja2>=3.0.0PyJWT>=2.8.0
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+python-dotenv
+PyJWT>=2.0.0
+Jinja2>=3.0.0

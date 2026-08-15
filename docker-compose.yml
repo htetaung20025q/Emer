@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  fastapi-backend:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    restart: always

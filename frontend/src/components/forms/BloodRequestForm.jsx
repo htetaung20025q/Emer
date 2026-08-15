@@ -72,30 +72,16 @@ export default function BloodRequestForm({ lang, onClose }) {
       additional_notes: formData.additionalNotes || null
     };
 
-    try {
-      const response = await fetch('http://localhost:8000/api/register/patient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('API Error:', errorData);
-        throw new Error('Failed to submit');
-      }
-
+    // Simulate network delay for demo purposes
+    setTimeout(() => {
+      setIsSubmitting(false);
       setShowConfirmModal(false);
       setIsSuccess(true);
+      
       setTimeout(() => {
         onClose();
       }, 2500);
-    } catch (error) {
-      console.error('Submission failed:', error);
-      alert('Failed to request blood. Please check your data and try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   if (isSuccess) {

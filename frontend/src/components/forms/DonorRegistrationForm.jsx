@@ -91,29 +91,15 @@ export default function DonorRegistrationForm({ lang, onClose }) {
       ready_for_emergency: formData.availableForEmergency === 'yes'
     };
 
-    try {
-      const response = await fetch('http://localhost:8000/api/register/volunteer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('API Error:', errorData);
-        throw new Error('Failed to submit');
-      }
-
+    // Simulate network delay for demo purposes
+    setTimeout(() => {
+      setIsSubmitting(false);
       setIsSuccess(true);
+      
       setTimeout(() => {
         onClose();
       }, 2500);
-    } catch (error) {
-      console.error('Submission failed:', error);
-      alert('Failed to register. Please check your data and try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   if (isSuccess) {

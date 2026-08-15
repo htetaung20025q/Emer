@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistration }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPartnerDropdownOpen, setIsPartnerDropdownOpen] = useState(false);
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 w-full border-b border-slate-100">
@@ -44,27 +44,13 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
         {/* Desktop Right */}
         <nav className="hidden md:flex items-center gap-6">
           
-          {/* Be Our Partner Dropdown */}
-          <div 
-            className="relative"
-            onMouseEnter={() => setIsPartnerDropdownOpen(true)}
-            onMouseLeave={() => setIsPartnerDropdownOpen(false)}
+          {/* About Us Link */}
+          <Link 
+            to="/about" 
+            className="text-sm font-semibold text-slate-800 hover:text-red-600 transition-colors py-2"
           >
-            <div className="flex items-center gap-1 text-sm font-semibold text-slate-800 cursor-pointer py-2">
-              {t.beOurPartner}
-              <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-            </div>
-            {isPartnerDropdownOpen && (
-              <div className="absolute top-full right-0 w-40 bg-white shadow-lg rounded-lg border border-slate-100 overflow-hidden py-1">
-                <button onClick={() => { onOpenRegistration('volunteer'); setIsPartnerDropdownOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
-                  {t.volunteer}
-                </button>
-                <button onClick={() => { onOpenRegistration('user'); setIsPartnerDropdownOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
-                  {t.userMenu}
-                </button>
-              </div>
-            )}
-          </div>
+            {t.aboutUs || "ကျွန်ုပ်တို့အကြောင်း (About Us)"}
+          </Link>
 
 
 
@@ -93,11 +79,15 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-50 border-t border-slate-200 flex flex-col p-4 gap-4">
-          <div className="flex flex-col gap-2 border-b border-slate-200 pb-4">
-            <div className="text-xs uppercase text-slate-500 font-bold mb-1">{t.beOurPartner}</div>
-            <button onClick={() => { onOpenRegistration('volunteer'); setIsMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-700 hover:text-red-600">{t.volunteer}</button>
-            <button onClick={() => { onOpenRegistration('user'); setIsMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-700 hover:text-red-600">{t.userMenu}</button>
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-md flex flex-col p-4 gap-4 h-auto z-40">
+          <div className="flex flex-col border-b border-slate-200 pb-4">
+            <Link 
+              to="/about" 
+              onClick={() => setIsMenuOpen(false)}
+              className="w-full text-left py-2 mb-1 text-sm font-semibold text-slate-800 hover:text-red-600 transition-colors outline-none"
+            >
+              {t.aboutUs || "ကျွန်ုပ်တို့အကြောင်း (About Us)"}
+            </Link>
           </div>
           
 

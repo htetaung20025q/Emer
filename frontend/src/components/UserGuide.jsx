@@ -44,25 +44,6 @@ export default function UserGuide({ t, lang }) {
         {/* Sticky Scroll Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative items-start">
           
-          {/* Mobile-only sticky preview */}
-          <div className="md:hidden sticky top-[70px] z-30 bg-white/95 backdrop-blur py-4 flex justify-center border-b border-slate-100 shadow-sm mb-8 rounded-b-3xl">
-            <div className="w-40 h-[280px] bg-slate-900 rounded-[2rem] border-[6px] border-slate-900 shadow-lg relative overflow-hidden flex flex-col items-center">
-              <div className="absolute top-0 w-20 h-4 bg-slate-900 rounded-b-lg z-20"></div>
-              <AnimatePresence mode="wait">
-                <motion.img 
-                  key={activeImage}
-                  src={activeImage}
-                  alt="App Mockup"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="w-full h-full object-cover absolute inset-0 z-10"
-                />
-              </AnimatePresence>
-            </div>
-          </div>
-
           {/* Left Column (Scrolling Text) */}
           <div className="flex flex-col pb-32">
             {topics.map((topic) => (
@@ -86,6 +67,13 @@ export default function UserGuide({ t, lang }) {
                 <p className={`text-lg leading-relaxed transition-colors duration-500 ${activeImage === topic.imgUrl ? 'text-slate-600' : 'text-slate-400'}`}>
                   {topic.content}
                 </p>
+                
+                {/* Mobile-Only Inline Image */}
+                <img 
+                  src={topic.imgUrl} 
+                  alt={topic.title} 
+                  className="block md:hidden mt-6 w-full max-w-[200px] h-auto rounded-xl shadow-md border border-gray-200"
+                />
               </motion.div>
             ))}
           </div>

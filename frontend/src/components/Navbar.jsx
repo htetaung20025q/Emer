@@ -45,12 +45,12 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
         </div>
 
         {/* Desktop Right */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           
           {/* About Us Link */}
           <Link 
             to="/about" 
-            className="text-sm font-semibold text-slate-800 hover:text-red-600 transition-colors py-2"
+            className="text-base font-bold text-slate-800 hover:text-red-600 transition-colors py-2"
           >
             {t.aboutUs || "ကျွန်ုပ်တို့အကြောင်း (About Us)"}
           </Link>
@@ -58,14 +58,14 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
 
 
           {/* Language Toggle */}
-          <div className="flex items-center text-sm py-2">
+          <div className="flex items-center text-base py-2">
             <span 
               onClick={() => setLang('en')}
               className={`cursor-pointer transition-colors ${lang === 'en' ? 'text-red-600 font-bold' : 'text-slate-400 font-medium hover:text-slate-600'}`}
             >
               EN
             </span>
-            <span className="text-gray-300 mx-2 select-none">/</span>
+            <span className="text-gray-300 mx-3 select-none">/</span>
             <span 
               onClick={() => setLang('mm')}
               className={`cursor-pointer transition-colors ${lang === 'mm' ? 'text-red-600 font-bold' : 'text-slate-400 font-medium hover:text-slate-600'}`}
@@ -74,7 +74,7 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
             </span>
           </div>
           
-          <a href="#download" className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold tracking-wide uppercase px-5 py-2.5 rounded-full shadow transition-colors outline-none ml-2">
+          <a href="#download" className="bg-red-600 hover:bg-red-700 text-white text-base font-bold tracking-wide uppercase px-6 py-3 lg:px-8 lg:py-3.5 rounded-full shadow transition-colors outline-none ml-2">
             {t.navDownload}
           </a>
         </nav>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero({ t, onOpenFirstAid }) {
   return (
-    <section className="bg-slate-900 text-white py-16 md:py-24 px-4 md:px-8">
+    <section className="bg-slate-900 text-white py-16 md:py-24 px-4 md:px-8 min-h-[400px] md:min-h-[450px] flex items-center">
       <div className="max-w-7xl mx-auto w-full flex flex-col items-start text-left">
         <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
           {t.heroTitle}

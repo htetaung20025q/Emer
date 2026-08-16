@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MainContent from './components/MainContent';
 import UseCases from './components/UseCases';
-import HowToUse from './components/HowToUse';
+import LearnApp from './components/LearnApp';
 import AboutUs from './components/AboutUs';
 import Privacy from './components/Privacy';
 import DownloadApp from './components/DownloadApp';
@@ -17,6 +17,7 @@ import UserGuide from './components/UserGuide';
 import LegalModals from './components/LegalModals';
 import PrivacyConsentModal from './components/PrivacyConsentModal';
 import TryOutPage from './pages/TryOutPage';
+import SupportButton from './components/SupportButton';
 
 function MainApp() {
   const [lang, setLang] = useState(() => {
@@ -55,7 +56,7 @@ function MainApp() {
         <Route path="/guide" element={<UserGuide t={t} lang={lang} />} />
         <Route path="/learn" element={
           <>
-            <HowToUse />
+            <LearnApp />
           </>
         } />
         <Route path="/about" element={<AboutUs />} />
@@ -73,6 +74,7 @@ function MainApp() {
 function App() {
   return (
     <Router>
+      <SupportButton />
       <Routes>
         <Route path="/*" element={<MainApp />} />
         <Route path="/try-out" element={<TryOutPage />} />

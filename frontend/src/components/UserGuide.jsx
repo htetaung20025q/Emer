@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import photo1 from './ScreenShot/photo_1_2026-08-16_22-08-24.jpg';
+import photo2 from './ScreenShot/photo_2_2026-08-16_22-08-24.jpg';
+import photo3 from './ScreenShot/photo_3_2026-08-16_22-08-24.jpg';
+import photo4 from './ScreenShot/photo_4_2026-08-16_22-08-24.jpg';
+import photo5 from './ScreenShot/photo_5_2026-08-16_22-08-24.jpg';
+import photo6 from './ScreenShot/photo_6_2026-08-16_22-08-24.jpg';
+import photo7 from './ScreenShot/photo 7.jpg';
+import photo8 from './ScreenShot/image copy.png';
+import photo9 from './ScreenShot/image.png';
+import photo10 from './ScreenShot/Untitled design.png';
 
 export default function UserGuide({ t, lang }) {
   // We've adapted the user guide topics to include image mockups for the sticky scroll feature
@@ -7,30 +17,44 @@ export default function UserGuide({ t, lang }) {
     {
       id: 'getting_started',
       category: t?.ugCatBasics || "Basics",
-      title: t?.ugGettingStarted || "Getting Started",
-      content: t?.ugGettingStartedContent || "Welcome to the Ku Nyi Kal Sal app. This application is designed to help you quickly access emergency services and resources. To get started, make sure your phone's location services are enabled.",
-      imgUrl: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=300&auto=format&fit=crop'
+      title: t?.ugGettingStarted || "Getting Start",
+      content: t?.ugGettingStartedContent || "Welcome to the Ku Nyi Kal Sal app. This application is designed to help you quickly access emergency services and resources. To get started, register or login and make sure your phone's location services are enabled.",
+      imgUrl: photo8
+    },
+    {
+      id: 'getting_started',
+      category: t?.ugCatBasics || "Basics",
+      title: t?.ugGettingStarted2 || "Getting Start",
+      content: t?.ugGettingStartedContent2 || "Welcome to the Ku Nyi Kal Sal app. This application is designed to help you quickly access emergency services and resources. To get started, make sure your phone's location services are enabled.",
+      imgUrl: photo5
     },
     {
       id: 'sos_alerts',
       category: t?.ugCatFeatures || "Features",
       title: t?.ugSosAlerts || "Sending SOS Alerts",
       content: t?.ugSosAlertsContent || "To send an SOS alert, press the large red button on the home screen. This will instantly broadcast your live location to emergency responders and notify your pre-configured emergency contacts.",
-      imgUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=300&auto=format&fit=crop'
+      imgUrl: photo2
     },
     {
       id: 'first_aid',
       category: t?.ugCatResources || "Resources",
-      title: t?.ugFirstAid || "First Aid Guidelines",
-      content: t?.ugFirstAidContent || "You can access life-saving first aid instructions even when offline. Navigate to the First Aid section to read step-by-step guides for choking, bleeding, and CPR.",
-      imgUrl: 'https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=300&auto=format&fit=crop'
+      title: t?.ugFirstAid || "Select Emergency Type",
+      content: t?.ugFirstAidContent || "You can select the type of emergency you are experiencing and call the relevant departments.",
+      imgUrl: photo4
     },
     {
       id: 'privacy',
-      category: t?.ugCatSecurity || "Security",
+      category: t?.ugCatSecurity || "User Privacy",
+      title: t?.ugPrivacy2 || "Data & Privacy",
+      content: t?.ugPrivacyContent2 || "We take your privacy seriously. Your location is only shared when you explicitly trigger an SOS. All communications with medical professionals are end-to-end encrypted.",
+      imgUrl: photo10
+    },
+    {
+      id: 'privacy',
+      category: t?.ugCatSecurity2 || "Terms & Conditions",
       title: t?.ugPrivacy || "Data & Privacy",
       content: t?.ugPrivacyContent || "We take your privacy seriously. Your location is only shared when you explicitly trigger an SOS. All communications with medical professionals are end-to-end encrypted.",
-      imgUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=300&auto=format&fit=crop'
+      imgUrl: photo1
     }
   ];
 

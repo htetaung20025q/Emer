@@ -55,7 +55,7 @@ function MainApp() {
             <UseCases t={t} />
             <Privacy t={t} />
             <DownloadApp t={t} />
-            <CommunityImpact />
+            {/* <CommunityImpact /> */}
           </>
         } />
         <Route path="/guide" element={<UserGuide t={t} lang={lang} />} />

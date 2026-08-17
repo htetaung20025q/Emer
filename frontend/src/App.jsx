@@ -6,18 +6,21 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MainContent from './components/MainContent';
 import UseCases from './components/UseCases';
-import LearnApp from './components/LearnApp';
-import AboutUs from './components/AboutUs';
 import Privacy from './components/Privacy';
 import DownloadApp from './components/DownloadApp';
 import Footer from './components/Footer';
 import FirstAidModal from './components/FirstAidModal';
 import ChatModal from './components/ChatModal';
-import UserGuide from './components/UserGuide';
 import LegalModals from './components/LegalModals';
 import PrivacyConsentModal from './components/PrivacyConsentModal';
-import TryOutPage from './pages/TryOutPage';
 import SupportButton from './components/SupportButton';
+
+import UserGuide from './components/UserGuide';
+import LearnApp from './components/LearnApp';
+import AboutUs from './components/AboutUs';
+import TryOutPage from './pages/TryOutPage';
+
+import NetworkLoader from './components/NetworkLoader';
 
 function MainApp() {
   const [lang, setLang] = useState(() => {
@@ -40,7 +43,7 @@ function MainApp() {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans relative">
       <Navbar lang={lang} setLang={setLang} t={t} onOpenChat={() => setIsChatOpen(true)} />
       
       <Routes>
@@ -54,11 +57,7 @@ function MainApp() {
           </>
         } />
         <Route path="/guide" element={<UserGuide t={t} lang={lang} />} />
-        <Route path="/learn" element={
-          <>
-            <LearnApp />
-          </>
-        } />
+        <Route path="/learn" element={<LearnApp />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
 
@@ -74,11 +73,13 @@ function MainApp() {
 function App() {
   return (
     <Router>
-      <SupportButton />
-      <Routes>
-        <Route path="/*" element={<MainApp />} />
-        <Route path="/try-out" element={<TryOutPage />} />
-      </Routes>
+      <NetworkLoader>
+        <SupportButton />
+        <Routes>
+          <Route path="/*" element={<MainApp />} />
+          <Route path="/try-out" element={<TryOutPage />} />
+        </Routes>
+      </NetworkLoader>
     </Router>
   );
 }

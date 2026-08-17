@@ -1,57 +1,176 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FeedbackSuccessModal from './FeedbackSuccessModal';
 
-export default function AboutUs() {
+const AboutAndFeedback = () => {
+  const [feedback, setFeedback] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const handleChange = (e) => {
+    if (error) setError(null);
+    setFeedback({ ...feedback, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    // Check for offline status before attempting to send
+    if (!navigator.onLine) {
+      setError("Network error. Please check your connection and try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // ဤနေရာတွင် API သို့ ဒေတာပို့ရန် logic ထည့်နိုင်ပါသည်
+      // Simulating a network request that takes 2 seconds
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(resolve, 2000);
+        // Uncomment to test network timeout simulation
+        // setTimeout(() => { clearTimeout(timer); reject(new Error('Timeout')); }, 1000);
+      });
+
+      console.log('Feedback Submitted: ', feedback);
+      setShowSuccessModal(true);
+      setFeedback({ name: '', email: '', message: '' });
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <>
-      <div className="bg-white min-h-[calc(100vh-80px)] font-sans text-slate-800 flex flex-col items-center pt-16 pb-24 px-6 md:px-12 relative border-t border-slate-200">
+    <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         
-        {/* Main Content */}
-        <div className="max-w-3xl w-full text-center mt-8 md:mt-12">
-          
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            About Us
+        {/* About Us Section */}
+        <div className="p-6 sm:p-8 border-b border-gray-200">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            Khu Nyi Kal Sal <span className="text-red-600">Emergency App</span>
           </h1>
-          
-          {/* Subtitle / Quote */}
-          <div className="text-xl md:text-2xl italic text-slate-500 font-light mb-8">
-            "No one can measure the value of a single human life."
-          </div>
-          
-          {/* Divider */}
-          <hr className="border-t-2 border-red-600 w-16 mx-auto mb-10" />
-          
-          {/* Main Content Text */}
-          <div className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-slate-600">
-            <p>
-              In every emergency situation, every second counts. Each moment can mean the difference between life and death.
-            </p>
-            
-            <p>
-              Why was the <strong>KU NYI KAL SAL</strong> Application created? Because we believe everyone should have a ready-to-use tool in their pocket for critical moments.
-            </p>
-            
-            <p>
-              Our mission is to ensure every user stays safe and receives the help they need as quickly as possible, completely free of charge.
-            </p>
-            
-            <p>
-              This App includes essential features like SOS Alert, Location Sharing, Contact Relatives, and offline Medical Info — all designed to be simple and accessible for everyone.
-            </p>
-          </div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            Support Khu Nyi Kal Sal — Build a Stronger Local Community Together
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            <strong>Khu Nyi Kal Sal (ကူညီကယ်ဆယ်)</strong> is an emergency-focused platform created to help people connect with local volunteers, blood donors, organizations, and community support when assistance is needed.
+          </p>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Our goal is simple: use technology to make local connections stronger and help people find the right support more easily during difficult moments and the people who do not have the nearest emergency service contacts.
+          </p>
 
-          {/* Bottom Section */}
-          <div className="mt-20 flex flex-col items-center gap-3">
-            <div className="text-lg md:text-xl font-bold text-red-600 tracking-wider uppercase">
-              Be prepared to help
-            </div>
-            <div className="text-2xl md:text-3xl font-black text-slate-800">
-              ကူညီဖို့ အသင့်ပါ
-            </div>
-          </div>
+          <h3 className="text-lg font-bold text-gray-800 mb-3">How You Can Help</h3>
+          <p className="text-gray-600 mb-3">
+            Your support can help us continue developing the platform and establishing stronger local connections. You can support Khu Nyi Kal Sal by:
+          </p>
+          <ul className="list-disc list-inside text-gray-600 mb-6 space-y-1">
+            <li>Supporting app development</li>
+            <li>Helping us connect with local communities</li>
+            <li>Joining as a volunteer</li>
+            <li>Introducing local organizations to the platform</li>
+            <li>Sharing Khu Nyi Kal Sal with others</li>
+            <li>Supporting by testing Application</li>
+          </ul>
 
+          <h3 className="text-lg font-bold text-gray-800 mb-3">Be Part of Khu Nyi Kal Sal</h3>
+          <p className="text-gray-600 italic border-l-4 border-red-500 pl-4">
+            Join us in building a platform where people, volunteers, donors, and local organizations can connect when support is needed.<br/><br/>
+            <span className="font-semibold text-red-600">Connecting Communities. Supporting People. Building Together.</span>
+          </p>
         </div>
+
+        {/* Feedback Section */}
+        <div className="p-6 sm:p-8 bg-gray-50">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Share Your Feedback</h3>
+          <p className="text-gray-600 mb-6">
+            Your feedback helps us improve Khu Nyi Kal Sal to serve the community better.
+          </p>
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-md text-sm flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className={`space-y-4 transition-opacity duration-300 ${isSubmitting ? 'opacity-60' : 'opacity-100'}`}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={feedback.name}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  placeholder="Your Name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (Optional)</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={feedback.email}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  placeholder="you@example.com"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your Feedback</label>
+              <textarea
+                name="message"
+                id="message"
+                rows="4"
+                required
+                value={feedback.message}
+                onChange={handleChange}
+                disabled={isSubmitting}
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
+                placeholder="Let us know how we can improve..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200 disabled:bg-red-400 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Processing...
+                </span>
+              ) : (
+                "Submit Feedback"
+              )}
+            </button>
+          </form>
+        </div>
+
       </div>
-    </>
+      
+      <FeedbackSuccessModal 
+        isOpen={showSuccessModal} 
+        onClose={() => setShowSuccessModal(false)} 
+      />
+    </div>
   );
-}
+};
+
+export default AboutAndFeedback;

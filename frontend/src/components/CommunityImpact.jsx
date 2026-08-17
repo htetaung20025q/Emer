@@ -36,17 +36,17 @@ const CommunityImpact = () => {
     <section className="bg-white py-16 px-4 md:px-8 border-t border-slate-200">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-left">
-          လှုပ်ရှားမှုမှတ်တမ်းများ
+          Activities
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {activities.map((activity) => (
-            <div key={activity.id} className="flex flex-col group border border-slate-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow bg-white">
+            <div key={activity.id} className="flex flex-col border border-gray-200 rounded-xl overflow-hidden bg-white">
               <div className="overflow-hidden">
                 <img 
                   src={activity.image} 
                   alt={activity.title} 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="w-full h-48 object-cover" 
                 />
               </div>
               <div className="p-5 flex flex-col flex-1">

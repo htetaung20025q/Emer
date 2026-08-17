@@ -8,6 +8,7 @@ import MainContent from './components/MainContent';
 import UseCases from './components/UseCases';
 import Privacy from './components/Privacy';
 import DownloadApp from './components/DownloadApp';
+import CommunityImpact from './components/CommunityImpact';
 import Footer from './components/Footer';
 import FirstAidModal from './components/FirstAidModal';
 import ChatModal from './components/ChatModal';
@@ -54,6 +55,7 @@ function MainApp() {
             <UseCases t={t} />
             <Privacy t={t} />
             <DownloadApp t={t} />
+            <CommunityImpact />
           </>
         } />
         <Route path="/guide" element={<UserGuide t={t} lang={lang} />} />

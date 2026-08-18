@@ -1,50 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import FeedbackSuccessModal from './FeedbackSuccessModal';
+import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AboutAndFeedback = () => {
-  const [feedback, setFeedback] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState({ user_name: '', user_email: '', message: '' });
+  const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const form = useRef();
 
   const handleChange = (e) => {
     if (error) setError(null);
     setFeedback({ ...feedback, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsSending(true);
     setError(null);
 
     // Check for offline status before attempting to send
     if (!navigator.onLine) {
       setError("Network error. Please check your connection and try again.");
-      setIsSubmitting(false);
+      setIsSending(false);
       return;
     }
 
-    try {
-      // ဤနေရာတွင် API သို့ ဒေတာပို့ရန် logic ထည့်နိုင်ပါသည်
-      // Simulating a network request that takes 2 seconds
-      await new Promise((resolve, reject) => {
-        const timer = setTimeout(resolve, 2000);
-        // Uncomment to test network timeout simulation
-        // setTimeout(() => { clearTimeout(timer); reject(new Error('Timeout')); }, 1000);
+    emailjs.sendForm('service_khunyikalsal', 'template_btlr7je', form.current, 'kAxjlSzNpoe7n_4wf')
+      .then((result) => {
+        toast.success('Success! Your feedback has been sent.');
+        e.target.reset();
+        setFeedback({ user_name: '', user_email: '', message: '' });
+        setShowSuccessModal(true);
+      }, (error) => {
+        toast.error('Failed to send feedback. Please try again.');
+        setError(error.text || "Network error or failed to send email.");
+      })
+      .finally(() => {
+        setIsSending(false);
       });
-
-      console.log('Feedback Submitted: ', feedback);
-      setShowSuccessModal(true);
-      setFeedback({ name: '', email: '', message: '' });
-    } catch (err) {
-      setError("Network error. Please check your connection and try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+      <Toaster position="top-center" />
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         
         {/* About Us Section */}
@@ -98,30 +99,30 @@ const AboutAndFeedback = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className={`space-y-4 transition-opacity duration-300 ${isSubmitting ? 'opacity-60' : 'opacity-100'}`}>
+          <form ref={form} onSubmit={handleSubmit} className={`space-y-4 transition-opacity duration-300 ${isSending ? 'opacity-60' : 'opacity-100'}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                <label htmlFor="user_name" className="block text-sm font-medium text-gray-700">Name</label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
-                  value={feedback.name}
+                  name="user_name"
+                  id="user_name"
+                  value={feedback.user_name}
                   onChange={handleChange}
-                  disabled={isSubmitting}
+                  disabled={isSending}
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
                   placeholder="Your Name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (Optional)</label>
+                <label htmlFor="user_email" className="block text-sm font-medium text-gray-700">Email (Optional)</label>
                 <input
                   type="email"
-                  name="email"
-                  id="email"
-                  value={feedback.email}
+                  name="user_email"
+                  id="user_email"
+                  value={feedback.user_email}
                   onChange={handleChange}
-                  disabled={isSubmitting}
+                  disabled={isSending}
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
                   placeholder="you@example.com"
                 />
@@ -137,7 +138,7 @@ const AboutAndFeedback = () => {
                 required
                 value={feedback.message}
                 onChange={handleChange}
-                disabled={isSubmitting}
+                disabled={isSending}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm p-2 border disabled:bg-gray-100 disabled:cursor-not-allowed"
                 placeholder="Let us know how we can improve..."
               ></textarea>
@@ -145,16 +146,16 @@ const AboutAndFeedback = () => {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSending}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200 disabled:bg-red-400 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? (
+              {isSending ? (
                 <span className="flex items-center gap-2">
                   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Processing...
+                  Sending Feedback...
                 </span>
               ) : (
                 "Submit Feedback"

@@ -39,7 +39,7 @@ const FeedbackSuccessModal = ({ isOpen, onClose }) => {
                 onClick={() => setRating(star)}
               >
                 <svg 
-                  className={`w-10 h-10 ${star <= (hoverRating || rating) ? 'text-yellow-400' : 'text-gray-200'} transition-colors duration-200`} 
+                  className={`w-10 h-10 ${star <= (hoverRating > 0 ? hoverRating : rating) ? 'text-yellow-400' : 'text-gray-200'} transition-colors duration-200`} 
                   fill="currentColor" 
                   viewBox="0 0 20 20" 
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -18,7 +18,19 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-100 p-4">
+      <div className="w-full max-w-md mb-4 flex justify-start">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 rounded-full font-semibold text-xs transition-all border border-slate-200 shadow-xs"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Website
+        </Link>
+      </div>
+
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-slate-800 mb-6">Admin Login</h2>
         

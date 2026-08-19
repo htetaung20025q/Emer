@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export default function LearnApp() {
+export default function LearnAppPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   const features = [
@@ -60,9 +61,27 @@ export default function LearnApp() {
   ];
 
   return (
-    <section className="bg-slate-50 py-20 md:py-32 overflow-hidden font-sans">
+    <section className="bg-slate-50 py-12 md:py-24 overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
+        {/* Top Navigation Row with Back to Home */}
+        <div className="mb-8 flex items-center justify-between">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-red-50 text-slate-700 hover:text-red-600 rounded-full font-semibold text-xs md:text-sm transition-all border border-slate-200 hover:border-red-200 group shadow-xs hover:shadow"
+          >
+            <svg 
+              className="w-4 h-4 transition-transform group-hover:-translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>ပင်မစာမျက်နှာသို့ (Back to Home)</span>
+          </Link>
+        </div>
+
         {/* Header Section */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-slate-900 text-3xl md:text-4xl font-bold mb-4">

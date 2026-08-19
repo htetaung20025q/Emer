@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-import { translations } from './translations';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import MainContent from './components/MainContent';
-import UseCases from './components/UseCases';
-import Privacy from './components/Privacy';
-import DownloadApp from './components/DownloadApp';
-import CommunityImpact from './components/CommunityImpact';
-import Footer from './components/Footer';
-import FirstAidModal from './components/FirstAidModal';
-import ChatModal from './components/ChatModal';
-import LegalModals from './components/LegalModals';
-import PrivacyConsentModal from './components/PrivacyConsentModal';
-import SupportButton from './components/SupportButton';
+import { translations } from '@/translations';
 
-import UserGuide from './components/UserGuide';
-import LearnApp from './components/LearnApp';
-import AboutUs from './components/AboutUs';
-import TryOutPage from './pages/TryOutPage';
+// Layout & Common Components
+import { Navbar, Footer } from '@/components/layout';
+import { NetworkLoader, SupportButton } from '@/components/common';
 
-import NetworkLoader from './components/NetworkLoader';
+// Modals
+import { 
+  FirstAidModal, 
+  ChatModal, 
+  LegalModals, 
+  PrivacyConsentModal,
+  DownloadModal
+} from '@/components/modals';
+
+// Pages
+import { 
+  HomePage, 
+  UserGuidePage, 
+  LearnAppPage, 
+  AboutUsPage, 
+  TryOutPage, 
+  AdminLogin, 
+  AdminDashboard, 
+  ProtectedRoute 
+} from '@/pages';
 
 function MainApp() {
   const [lang, setLang] = useState(() => {
@@ -34,6 +39,7 @@ function MainApp() {
 
   const [isFirstAidModalOpen, setIsFirstAidModalOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,26 +54,29 @@ function MainApp() {
       <Navbar lang={lang} setLang={setLang} t={t} onOpenChat={() => setIsChatOpen(true)} />
       
       <Routes>
-        <Route path="/" element={
-          <>
-            <Hero t={t} onOpenFirstAid={() => setIsFirstAidModalOpen(true)} />
-            <MainContent t={t} />
-            <UseCases t={t} />
-            <Privacy t={t} />
-            <DownloadApp t={t} />
-            {/* <CommunityImpact /> */}
-          </>
-        } />
-        <Route path="/guide" element={<UserGuide t={t} lang={lang} />} />
-        <Route path="/learn" element={<LearnApp />} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route 
+          path="/" 
+          element={
+            <HomePage 
+              t={t} 
+              onOpenDownload={() => setIsDownloadModalOpen(true)}
+              onOpenFirstAid={() => setIsFirstAidModalOpen(true)} 
+            />
+          } 
+        />
+        <Route path="/guide" element={<UserGuidePage t={t} lang={lang} />} />
+        <Route path="/learn" element={<LearnAppPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
       </Routes>
 
-      <Footer t={t} onOpenLegal={setActiveLegalModal} />
+      <div className={location.pathname === '/guide' ? 'hidden lg:block' : ''}>
+        <Footer t={t} onOpenLegal={setActiveLegalModal} />
+      </div>
       <FirstAidModal t={t} isOpen={isFirstAidModalOpen} onClose={() => setIsFirstAidModalOpen(false)} />
       <ChatModal t={t} isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       <LegalModals t={t} activeModal={activeLegalModal} onClose={() => setActiveLegalModal(null)} />
       <PrivacyConsentModal t={t} />
+      <DownloadModal t={t} isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
     </div>
   );
 }
@@ -78,8 +87,17 @@ function App() {
       <NetworkLoader>
         <SupportButton />
         <Routes>
-          <Route path="/*" element={<MainApp />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route 
+            path="/admin-dashboard" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/try-out" element={<TryOutPage />} />
+          <Route path="/*" element={<MainApp />} />
         </Routes>
       </NetworkLoader>
     </Router>

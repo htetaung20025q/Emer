@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import SOSModal from './SOSModal';
+import SOSModal from '@/components/modals/SOSModal';
+
 
 export default function FloatingCallButton({ t }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,7 +1,8 @@
 import React from 'react';
-import { useLoading } from '../context/LoadingContext';
-import Spinner from './ui/Spinner';
-import { FullPageSkeleton } from './ui/Skeleton';
+import { useLoading } from '@/context/LoadingContext';
+import Spinner from '@/components/ui/Spinner';
+import { FullPageSkeleton } from '@/components/ui/Skeleton';
+
 
 const GlobalLoader = ({ type: defaultType = 'spinner', forceShow = false }) => {
   const { isLoading, loadingType, message } = useLoading();

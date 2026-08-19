@@ -45,7 +45,7 @@ export default function SupportModal({ isOpen, onClose }) {
               </div>
               <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">Support Our Mission</h3>
               <p className="text-slate-600 text-[0.95rem] leading-relaxed px-1 text-center md:text-left font-medium">
-                အရေးပေါ်အခြေအနေများတွင် လိုအပ်နေသူများနှင့် ကူညီပေးနိုင်သူများကို ချိတ်ဆက်ပေးမည့် KHUNYIKALSAL Application ကို ပိုမိုကောင်းမွန်စွာ ဖွံ့ဖြိုးတိုးတက်စေရန် သင်တို့၏ ပံ့ပိုးကူညီမှုများ လိုအပ်နေပါသည်။
+                အရေးပေါ်အခြေအနေများတွင် လိုအပ်နေသူများနှင့် ကူညီပေးနိုင်သူများကို ချိတ်ဆက်ပေးမည့် Khu Nyi Kal Sal Application ကို ပိုမိုကောင်းမွန်စွာ ဖွံ့ဖြိုးတိုးတက်စေရန် သင်တို့၏ ပံ့ပိုးကူညီမှုများ လိုအပ်နေပါသည်။
               </p>
             </div>
 
@@ -58,7 +58,7 @@ export default function SupportModal({ isOpen, onClose }) {
                   <span className="font-bold tracking-wider text-lg">KBZPay</span>
                   <span className="text-[10px] uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full font-bold">Verified</span>
                 </div>
-                <div className="text-sm text-blue-100 mb-4 font-medium relative z-10">KHUNYIKALSAL</div>
+                <div className="text-sm text-blue-100 mb-4 font-medium relative z-10">Khu Nyi Kal Sal</div>
                 
                 <div className="flex items-center justify-between bg-black/20 rounded-xl p-3 backdrop-blur-md border border-white/10 relative z-10">
                   <span className="font-mono text-[1.1rem] tracking-widest font-bold text-white">09 123 456 789</span>
@@ -83,7 +83,7 @@ export default function SupportModal({ isOpen, onClose }) {
                   <span className="font-bold tracking-wider text-lg">WavePay</span>
                   <span className="text-[10px] uppercase tracking-wider bg-[#4a3605]/10 px-2.5 py-1 rounded-full font-bold">Verified</span>
                 </div>
-                <div className="text-sm font-semibold opacity-90 mb-4 relative z-10">KHUNYIKALSAL</div>
+                <div className="text-sm font-semibold opacity-90 mb-4 relative z-10">Khu Nyi Kal Sal</div>
                 
                 <div className="flex items-center justify-between bg-white/30 rounded-xl p-3 border border-white/40 relative z-10 shadow-inner">
                   <span className="font-mono text-[1.1rem] tracking-widest font-bold">09 987 654 321</span>

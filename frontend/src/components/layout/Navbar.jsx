@@ -73,10 +73,6 @@ export default function Navbar({ lang, setLang, t, onOpenChat, onOpenRegistratio
               MM
             </span>
           </div>
-          
-          <a href="#download" className="bg-red-600 hover:bg-red-700 text-white text-base font-bold tracking-wide uppercase px-6 py-3 lg:px-8 lg:py-3.5 rounded-full shadow transition-colors outline-none ml-2">
-            {t.navDownload}
-          </a>
         </nav>
       </div>
 

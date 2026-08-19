@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import FeedbackSuccessModal from './FeedbackSuccessModal';
+import { Link } from 'react-router-dom';
+import FeedbackSuccessModal from '@/components/modals/FeedbackSuccessModal';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 
-const AboutAndFeedback = () => {
+const AboutUsPage = () => {
   const [feedback, setFeedback] = useState({ user_name: '', user_email: '', message: '' });
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState(null);
@@ -46,6 +47,25 @@ const AboutAndFeedback = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
       <Toaster position="top-center" />
+      
+      {/* Back to Home Button */}
+      <div className="max-w-3xl mx-auto mb-6 flex items-center justify-between">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-red-50 text-slate-700 hover:text-red-600 rounded-full font-semibold text-xs md:text-sm transition-all border border-slate-200 hover:border-red-200 group shadow-xs hover:shadow"
+        >
+          <svg 
+            className="w-4 h-4 transition-transform group-hover:-translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>ပင်မစာမျက်နှာသို့ (Back to Home)</span>
+        </Link>
+      </div>
+
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         
         {/* About Us Section */}
@@ -174,4 +194,4 @@ const AboutAndFeedback = () => {
   );
 };
 
-export default AboutAndFeedback;
+export default AboutUsPage;
